@@ -83,4 +83,9 @@ public class BookController {
         repository.deleteById(id);
     }
 
+    @GetMapping("/message")
+    String message() {
+        return "Congratulation ! your sample app deployed successfully in Azur Cloud !";
+    }
+
 }
