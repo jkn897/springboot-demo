@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
-Built-By: MADAM
-Build-Jdk: 17.0.4.1
-Implementation-Title: Spring Boot REST API Example
+Built-By: Bapi
+Build-Jdk: 17.0.7
+Implementation-Title: Spring Boot Docker Jenkins Demo
 Implementation-Version: 1.0
 Implementation-Vendor-Id: org.springframework.boot
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
- -starter-parent/spring-rest-hello-world
+ -starter-parent/spring-boot-demo
 Created-By: Maven Integration for Eclipse
 
