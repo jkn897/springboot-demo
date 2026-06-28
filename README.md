@@ -25,3 +25,14 @@ jdk11 , spring-boot 2.7.13 and elk elasticsearch-8.12.2
 
 This is tried using the below url and it worked.
 https://thirumurthi.hashnode.dev/ship-springboot-app-logs-directly-to-elastic-search
+
+### Send app logs directly to kibana using logstash (Not related with above)
+1. After starting elastic, start logstash using the logstash.conf file exist in the root directory. 
+   **bin>logstash -f D:\Downloads\extract\logstash-8.12.2\config\logstash.conf**
+2. If logstash is started then add "logstash-logback-encoder" dependency in the spring boot app pom file.  
+3. Then add the logback-spring(logstash) in src/main/resources path which is available in the root directory.
+4. Then start the app and hit available endpoints.
+5. Go to kibana and verify the logs
+**Note**
+Tested already and used the below link
+https://betterstack.com/community/questions/send-spring-boot-logs-directly-to-logstash-with-no-file/

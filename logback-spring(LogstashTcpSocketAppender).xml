@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- Include default Spring Boot console log patterns -->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <!-- Read the Logstash destination from application properties -->
+    <springProperty scope="context" name="LOGSTASH_DESTINATION" source="logging.logstash.destination" defaultValue="localhost:5044"/>
+
+    <!-- Logstash TCP Appender Configuration -->
+    <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>${LOGSTASH_DESTINATION}</destination>
+        
+        <!-- Keep the connection alive -->
+        <keepAliveDuration>5 minutes</keepAliveDuration>
+        
+        <!-- Recommended JSON encoder to parse key metrics natively in ELK -->
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <timestamp/>
+                <logLevel/>
+                <loggerName/>
+                <threadName/>
+                <message/>
+                <stackTrace/>
+                <mdc/> <!-- Captures Contextual data e.g. Trace IDs -->
+            </providers>
+        </encoder>
+    </appender>
+
+    <!-- Apply appenders to root logger -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="LOGSTASH"/>
+    </root>
+</configuration>
